@@ -1,0 +1,91 @@
+.ps-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.ps-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ps-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,.4);
+  animation: cardIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.ps-icon { font-size: 60px; margin-bottom: 16px; }
+
+.ps-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -.03em;
+}
+
+.ps-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.ps-details {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.ps-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--border2);
+}
+.ps-row:last-child { border-bottom: none; }
+.ps-row span:first-child { color: var(--text-muted); font-weight: 600; }
+.ps-row span:last-child  { color: var(--text); font-weight: 700; }
+
+.ps-booking-id { color: var(--cyan) !important; font-family: 'Poppins', sans-serif; }
+
+.ps-btn {
+  display: inline-block;
+  padding: 13px 32px;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  color: #fff;
+  border-radius: var(--r-sm);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: opacity .2s, transform .15s;
+  box-shadow: 0 6px 24px rgba(27,205,224,.35);
+}
+.ps-btn:hover { opacity: .9; transform: translateY(-2px); }

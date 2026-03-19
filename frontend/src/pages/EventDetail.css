@@ -1,0 +1,450 @@
+.ed-loading {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ed-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── HERO ── */
+.ed-hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.ed-hero-blur {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  object-fit: cover;
+  filter: blur(28px) brightness(.4) saturate(1.4);
+  transform: scale(1.05);
+}
+
+.ed-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: .55;
+}
+
+.ed-hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--card) 100%);
+}
+
+.ed-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,9,15,.95) 0%, rgba(7,9,15,.3) 60%, transparent 100%);
+}
+
+.ed-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding-bottom: 36px;
+}
+
+.ed-back {
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 16px;
+  transition: color .2s;
+}
+.ed-back:hover { color: var(--cyan); }
+
+.ed-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ed-badge {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 4px 11px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.ed-badge-cat {
+  background: rgba(27,205,224,.15);
+  border: 1px solid rgba(27,205,224,.35);
+  color: var(--cyan);
+}
+
+.ed-badge-vibe {
+  background: rgba(255,199,0,.12);
+  border: 1px solid rgba(255,199,0,.3);
+  color: var(--gold);
+}
+
+.ed-badge-hot {
+  background: rgba(22,69,200,.2);
+  border: 1px solid rgba(22,69,200,.4);
+  color: #7ba7ff;
+}
+
+.ed-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  max-width: 720px;
+}
+
+.ed-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+}
+
+/* ── BODY ── */
+.ed-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  padding-top: 48px;
+  padding-bottom: 80px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .ed-body { grid-template-columns: 1fr; }
+  .ed-ticket-box { order: -1; }
+  .ed-hero { height: 300px; }
+}
+
+/* ── LEFT SECTIONS ── */
+.ed-section { margin-bottom: 40px; }
+
+.ed-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ed-desc {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-soft);
+}
+
+.ed-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 500px) { .ed-details-grid { grid-template-columns: 1fr; } }
+
+.ed-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ed-detail-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ed-detail-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.ed-detail-val {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ed-detail-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── TICKET BOX ── */
+.ed-ticket-box {
+  position: sticky;
+  top: calc(var(--header-height, 64px) + 24px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+.ed-ticket-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ed-price-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+.ed-price-cur {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ed-price-free {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+.ed-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-top: 1px solid var(--border2);
+}
+
+.ed-qty-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.ed-qty-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid var(--border2);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.ed-qty-ctrl button {
+  width: 34px;
+  height: 34px;
+  background: var(--surface2);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  transition: background .15s;
+}
+.ed-qty-ctrl button:hover { background: var(--cyan-glow); color: var(--cyan); }
+
+.ed-qty-ctrl span {
+  width: 40px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  border-left: 1px solid var(--border2);
+  border-right: 1px solid var(--border2);
+  line-height: 34px;
+}
+
+.ed-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.ed-total-val {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.ed-urgency {
+  background: rgba(255,199,0,.1);
+  border: 1px solid rgba(255,199,0,.25);
+  border-radius: var(--r-sm);
+  padding: 9px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.ed-btn-buy {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  color: #fff;
+  border: none;
+  border-radius: var(--r-sm);
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 6px 28px rgba(27,205,224,.35);
+}
+
+.ed-btn-buy:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(27,205,224,.5);
+}
+
+.ed-bought {
+  background: rgba(27,205,224,.1);
+  border: 1px solid rgba(27,205,224,.25);
+  border-radius: var(--r-sm);
+  padding: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.ed-btn-fav {
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  border: 1.5px solid var(--border2);
+  border-radius: var(--r-sm);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.ed-btn-fav:hover { border-color: #ff4d6d; color: #ff4d6d; }
+.ed-btn-fav.on    { border-color: #ff4d6d; color: #ff4d6d; background: rgba(255,77,109,.06); }
+
+.ed-ticket-note {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.ed-book-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.ed-book-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ed-book-field label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.ed-book-field input {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border: 1.5px solid var(--border2);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.ed-book-field input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px var(--cyan-glow);
+}
+
+.ed-book-field input::placeholder { color: var(--text-muted); }
+
+.ed-book-error {
+  background: rgba(255,71,87,.08);
+  border: 1px solid rgba(255,71,87,.2);
+  border-radius: var(--r-sm);
+  padding: 9px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff6b78;
+}
+
+.ed-btn-buy:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none !important;
+}
