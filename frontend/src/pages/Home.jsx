@@ -137,9 +137,7 @@ export default function Home() {
           <div className="hero-inner wrap">
             {/* Left */}
             <div className="hero-left">
-              <div className="hero-eyebrow">
-                ⭐ #1 Event Ticketing in Morocco
-              </div>
+              <div className="hero-eyebrow">⭐ Your ticket to every event</div>
               <h1>
                 Find events in
                 <br />
@@ -190,8 +188,7 @@ export default function Home() {
                   Search →
                 </button>
               </form>
-
-              </div>
+            </div>
           </div>
         </section>
       )}
