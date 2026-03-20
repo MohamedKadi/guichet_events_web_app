@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Sidebar.css';
@@ -5,6 +6,14 @@ import './Sidebar.css';
 export default function Sidebar({ isOpen, onClose }) {
   const { user, logoutUser } = useAuth();
   const navigate = useNavigate();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  function toggleTheme() {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  }
 
   function handleLogout() {
     logoutUser();
@@ -54,14 +63,8 @@ export default function Sidebar({ isOpen, onClose }) {
         <nav className="sidebar-nav">
           {user && (
             <>
-              <Link to="/account" className="sidebar-link" onClick={onClose}>
-                <span>👤</span> My Account
-              </Link>
               <Link to="/favorites" className="sidebar-link" onClick={onClose}>
                 <span>❤️</span> Favorites
-              </Link>
-              <Link to="/cart" className="sidebar-link" onClick={onClose}>
-                <span>🛒</span> My Cart
               </Link>
               <div className="sidebar-divider" />
             </>
@@ -71,25 +74,39 @@ export default function Sidebar({ isOpen, onClose }) {
             <span>🎟️</span> Browse All Events
           </Link>
 
+          <button className="sidebar-link" onClick={toggleTheme}>
+            <span>{theme === 'dark' ? '☀️' : '🌙'}</span>
+            {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+          </button>
+
           <div className="sidebar-divider" />
 
           <p className="sidebar-section-title">Support</p>
-          <Link to="/contact" className="sidebar-link" onClick={onClose}>
+          <a href="#" className="sidebar-link">
             <span>📞</span> Contact Support
-          </Link>
-          <Link to="/faq" className="sidebar-link" onClick={onClose}>
+          </a>
+          <a href="#" className="sidebar-link">
             <span>❓</span> FAQ
-          </Link>
-          <Link to="/refunds" className="sidebar-link" onClick={onClose}>
+          </a>
+          <a href="#" className="sidebar-link">
             <span>↩️</span> Refund Policy
-          </Link>
+          </a>
 
           <div className="sidebar-divider" />
 
           <p className="sidebar-section-title">About</p>
-          <Link to="/about" className="sidebar-link" onClick={onClose}>
+          <a href="#" className="sidebar-link">
             <span>ℹ️</span> About EvenTick
-          </Link>
+          </a>
+
+          {!user && (
+            <>
+              <div className="sidebar-divider" />
+              <Link to="/admin/login" className="sidebar-link" onClick={onClose}>
+                <span>⚙</span> Admin Portal
+              </Link>
+            </>
+          )}
 
           {user && (
             <>

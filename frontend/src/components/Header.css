@@ -190,6 +190,7 @@
   background: none;
   border: none;
   padding: 4px;
+  cursor: pointer;
 }
 
 .hamburger span {
@@ -306,13 +307,17 @@
 .pd-signout { color: rgba(255,71,87,.7); }
 .pd-signout:hover { color: #ff4757; background: rgba(255,71,87,.06); }
 
-@media (max-width: 960px) {
-  .nav-search { max-width: 240px; margin: 0 16px; }
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 1024px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
 }
 
 @media (max-width: 700px) {
   .nav { padding: 0 16px; }
-  .nav-search { max-width: 160px; margin: 0 10px; }
-  .hamburger { display: flex; }
-  .nav-btn-sm { display: none; }
 }

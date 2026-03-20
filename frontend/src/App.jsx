@@ -11,6 +11,7 @@ import EventDetail from './pages/EventDetail';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancel  from './pages/PaymentCancel';
 import BrowsePage from './pages/BrowsePage';
+import NotFound from './pages/NotFound';
 import StarCanvas from './components/StarCanvas';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -62,6 +63,7 @@ export default function App() {
                 <Route path="/events" element={<BrowsePage />} />
                 <Route path="/payment/success" element={<PaymentSuccess />} />
                 <Route path="/payment/cancel"  element={<PaymentCancel />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </>
           } />

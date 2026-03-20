@@ -191,48 +191,7 @@ export default function Home() {
                 </button>
               </form>
 
-              <div className="hero-stats">
-                <div>
-                  <div className="hstat-num">1,200+</div>
-                  <div className="hstat-label">Events</div>
-                </div>
-                <div>
-                  <div className="hstat-num">40+</div>
-                  <div className="hstat-label">Cities</div>
-                </div>
-                <div>
-                  <div className="hstat-num">85K+</div>
-                  <div className="hstat-label">Tickets Sold</div>
-                </div>
-                <div>
-                  <div className="hstat-num">4.9★</div>
-                  <div className="hstat-label">Rating</div>
-                </div>
               </div>
-            </div>
-
-            {/* Right — preview cards */}
-            {featured.length > 0 && (
-              <div className="hero-right">
-                {featured.slice(0, 3).map((ev) => (
-                  <Link to={`/events/${ev.id}`} className="hcp" key={ev.id}>
-                    <div className="hcp-icon">{ev.category_icon || "🎭"}</div>
-                    <div className="hcp-info">
-                      <div className="hcp-title">{ev.title}</div>
-                      <div className="hcp-meta">
-                        {ev.city} · {formatDate(ev.event_date)}
-                      </div>
-                    </div>
-                    <div className="hcp-price">
-                      {Number(ev.price) > 0
-                        ? `${Number(ev.price).toFixed(0)}`
-                        : "Free"}
-                    </div>
-                    {ev.is_featured && <span className="hcp-badge">HOT</span>}
-                  </Link>
-                ))}
-              </div>
-            )}
           </div>
         </section>
       )}
@@ -328,10 +287,18 @@ export default function Home() {
             <div className="wrap">
               <div className="sec" style={{ paddingBottom: 0 }}>
                 <Link to={`/events/${featured[0].id}`} className="feat-banner">
-                  <div className="feat-glow" />
-                  <div className="feat-deco">
-                    {featured[0].category_icon || "🎶"}
-                  </div>
+                  {featured[0].image_url ? (
+                    <img
+                      className="feat-bg-img"
+                      src={featured[0].image_url}
+                      alt={featured[0].title}
+                      onError={(e) => (e.target.style.display = "none")}
+                    />
+                  ) : (
+                    <div className="feat-deco">
+                      {featured[0].category_icon || "🎶"}
+                    </div>
+                  )}
                   <div className="feat-overlay" />
                   <div className="feat-body">
                     <div className="feat-tag">⚡ Featured</div>

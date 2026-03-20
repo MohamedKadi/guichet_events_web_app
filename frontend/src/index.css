@@ -19,19 +19,19 @@
 }
 
 [data-theme="light"] {
-  --bg: #F0F4FA;
-  --bg2: #E8EEF8;
+  --bg: #FFFFFF;
+  --bg2: #F8F9FB;
   --surface: #FFFFFF;
-  --surface2: #EEF3FB;
+  --surface2: #F4F6FA;
   --card: #FFFFFF;
-  --card-hover: #F5F8FF;
-  --border: rgba(22,69,200,.12);
+  --card-hover: #F8FAFF;
+  --border: rgba(22,69,200,.10);
   --border2: rgba(0,0,0,.08);
   --text: #0D1830;
   --text-soft: #4A5A7A;
   --text-muted: #8A9DC0;
-  --nav-bg: rgba(240,244,250,.94);
-  --select-bg: #F0F4FA;
+  --nav-bg: rgba(255,255,255,.96);
+  --select-bg: #FFFFFF;
   --input-bg: #FFFFFF;
 }
 
