@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
@@ -30,10 +30,20 @@ function AdminLoginRoute({ children }) {
 }
 
 export default function App() {
+  const location = useLocation();
+
   useEffect(() => {
     const saved = localStorage.getItem('theme') || 'dark';
     document.documentElement.dataset.theme = saved;
   }, []);
+
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
 
   return (
     <>

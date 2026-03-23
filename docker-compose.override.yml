@@ -1,0 +1,15 @@
+version: "3.9"
+
+# Local development overrides — no SSL, no nginx
+services:
+  frontend:
+    ports:
+      - "3000:3000"
+
+  backend:
+    ports:
+      - "5000:5000"
+
+  nginx:
+    profiles:
+      - production  # only starts with --profile production
